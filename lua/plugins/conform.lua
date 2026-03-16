@@ -18,10 +18,15 @@ return {
   ---@type conform.setupOpts
   opts = {
     -- Define your formatters
+    log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "biome" },
+      typescript = { "biome" },
+      javascriptreact = { "biome" },
+      typescriptreact = { "biome" },
+      json = { "biome" },
     },
     -- Set default options
     default_format_opts = {
@@ -33,6 +38,10 @@ return {
     formatters = {
       shfmt = {
         append_args = { "-i", "2" },
+      },
+      biome = {
+        --append_args = { "--write" },
+        require_cwd = true,
       },
     },
   },
